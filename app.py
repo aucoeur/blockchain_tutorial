@@ -1,7 +1,6 @@
-import requests
 from blockchain import Blockchain
 from uuid import uuid4
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 # Create app node
 app = Flask(__name__)
@@ -43,7 +42,7 @@ def mine():
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     """Make transaction"""
-    values = requests.get_json()
+    values = request.get_json()
 
     # Checking if requested data is there
     required = ['sender', 'recipient', 'amount']
